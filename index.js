@@ -7,8 +7,8 @@ const { PORT, API_KEY, MERCHANT_ACCOUNT, ENVIRONMENT } = require('./config');
 // This is the server-side configuration.  It pulls the information supplied in the .env file to create an instance of the checkout API
 const config = new Config();
 // Set your X-API-KEY with the API key from the Customer Area.
-config.apiKey = AQEyhmfxK4LIbhFLw0m/n3Q5qf3VaY9UCJ14XWZE03G/k2NFiiOG1UCCeQDpnmG/e5JhdNUQwV1bDb7kfNy1WIxIIkxgBw==-Ja7A/gSZVId4UT+i1h7YKftgp14KeoFgADrsaGZO3oA=-P)NMn(+r2<{df2v>;
-config.merchantAccount = AdyenRecruitment_NY1;
+config.apiKey = API_KEY'
+config.merchantAccount = MERCHANT_ACCOUNT;
 const client = new Client({ config });
 client.setEnvironment(ENVIRONMENT);
 const checkout = new CheckoutAPI(client);
