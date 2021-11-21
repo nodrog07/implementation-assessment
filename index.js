@@ -77,6 +77,11 @@ app.post('/additionalDetails', async (req, res) => {
     merchantreference,
     order,
     paymentmethod,
+    {
+  "type": "sepadirectdebit",
+  "sepa.ownerName": "A Klaassen",
+  "sepa.ibanNumber": "NL13TEST0123456789"
+}
     pspreference,
     refusalreason,
     refusalreasoncode,
