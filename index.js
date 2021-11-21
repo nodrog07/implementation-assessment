@@ -12,7 +12,16 @@ config.merchantAccount = MERCHANT_ACCOUNT;
 const client = new Client({ config });
 client.setEnvironment(ENVIRONMENT);
 const checkout = new CheckoutAPI(client);
-
+checkout.payments({
+    amount: { currency: "EUR", value: 1000 },
+    paymentMethod: {
+        type: 'sepadirectdebit',
+        sepa.ownerName: 'A. Schneider',
+        sepa.ibanNumber: 'DE87123456781234567890'
+    },
+    reference: "YOUR_ORDER_NUMBER",
+    merchantAccount: config.merchantAccount
+}).then(res => res);
 const app = express();
 app.use(express.json());
 
@@ -77,21 +86,6 @@ app.post('/additionalDetails', async (req, res) => {
     merchantreference,
     order,
     paymentmethod,
-    config.apiKey = '[API_KEY]';
-config.merchantAccount = '[YOUR_MERCHANT_ACCOUNT]';
-const client = new Client({ config });
-client.setEnvironment("TEST");
-const checkout = new CheckoutAPI(client);
-checkout.payments({
-    amount: { currency: "EUR", value: 1000 },
-    paymentMethod: {
-        type: 'sepadirectdebit',
-        sepa.ownerName: 'A. Schneider',
-        sepa.ibanNumber: 'DE87123456781234567890'
-    },
-    reference: "YOUR_ORDER_NUMBER",
-    merchantAccount: config.merchantAccount
-}).then(res => res);
     pspreference,
     refusalreason,
     refusalreasoncode,
