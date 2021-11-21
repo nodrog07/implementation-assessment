@@ -35,8 +35,8 @@ app.post('/getPaymentMethods', (req, res) => {
     amount: { currency: "EUR", value: 1000 },
     paymentMethod: {
         type: 'sepadirectdebit',
-        sepa.ownerName: 'A. Schneider',
-        sepa.ibanNumber: 'DE87123456781234567890'
+        sepa.ownerName: 'A. Klaassen',
+        sepa.ibanNumber: 'NL13TEST0123456789'
     },
     reference: "YOUR_ORDER_NUMBER",
     merchantAccount: config.merchantAccount
