@@ -12,16 +12,7 @@ config.merchantAccount = MERCHANT_ACCOUNT;
 const client = new Client({ config });
 client.setEnvironment(ENVIRONMENT);
 const checkout = new CheckoutAPI(client);
-checkout.payments({
-    amount: { currency: "EUR", value: 1000 },
-    paymentMethod: {
-        type: 'sepadirectdebit',
-        sepa.ownerName: 'A. Schneider',
-        sepa.ibanNumber: 'DE87123456781234567890'
-    },
-    reference: "YOUR_ORDER_NUMBER",
-    merchantAccount: config.merchantAccount
-}).then(res => res);
+
 const app = express();
 app.use(express.json());
 
@@ -41,7 +32,16 @@ app.use(express.static(__dirname + '/public'));
 app.post('/getPaymentMethods', (req, res) => {
   const { apikey, countryCode, shopperLocale, amount } = req.body;
   checkout.paymentMethods({
-    merchantAccount,
+    amount: { currency: "EUR", value: 1000 },
+    paymentMethod: {
+        type: 'sepadirectdebit',
+        sepa.ownerName: 'A. Schneider',
+        sepa.ibanNumber: 'DE87123456781234567890'
+    },
+    reference: "YOUR_ORDER_NUMBER",
+    merchantAccount: config.merchantAccount
+}).then(res => res);
+     merchantAccount,
     countryCode,
     shopperLocale,
     amount: {
